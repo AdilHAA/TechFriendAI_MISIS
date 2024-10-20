@@ -167,9 +167,9 @@ def preproccesing_img2txt(df_photo, df_user):
 
 def process_tab(df_post, df_user, df_photo, df_friend, df_group_table):
     df_user = preprocess_photo(df_photo, df_user)
-    df_user = preproccesing_img2txt(df_photo,df_user) #сделай люто проверки на проверку если фоток нема то добавь 5 столбцов из функции и ебаш наны
-    df_user = preproccesing_post(df_post,df_user)
+    df_user = preproccesing_img2txt(df_photo,df_user)
     df_user = preprocess_friends(df_friend, df_user)
+    df_user = preproccesing_post(df_post,df_user)
     df_user = preprocess_groups(df_group_table, df_user)
     df_user = preprocess_images(df_photo, df_user)
     tagging_info = df_user[['id','age','friend_count','Extroversion','Neuroticism','Agreeableness','Conscientiousness','Openness','average_likes','count_groups','count_images','total_posts','created_posts','ratio_post','frequency','contained_emoji','min_diff','max_diff','count_question_mark','count_exclamation_mark','average_post_len','average_sentence_len','average_used_ya']]
@@ -190,7 +190,7 @@ def process_tab2(path_to_db):
     df_photo = pd.read_sql_query("SELECT * FROM photo",cnx)
     df_friend = pd.read_sql_query("SELECT * FROM friend",cnx)
     df_user = preprocess_photo(df_photo,df_user)
-    df_user = preproccesing_img2txt(df_photo,df_user) #сделай люто проверки на проверку если фоток нема то добавь 5 столбцов из функции и ебаш наны
+    df_user = preproccesing_img2txt(df_photo,df_user)
     df_user = preproccesing_post(df_post,df_user)
     df_user = preprocess_friends(df_friend, df_user)
     tagging_info = df_user[['id','age','friend_count','Extroversion','Neuroticism','Agreeableness','Conscientiousness','Openness','average_likes','count_groups','count_images','total_posts','created_posts','ratio_post','frequency','contained_emoji','min_diff','max_diff','count_question_mark','count_exclamation_mark','average_post_len','average_sentence_len','average_used_ya']]
